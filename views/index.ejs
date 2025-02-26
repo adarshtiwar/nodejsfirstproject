@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Handling</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script> 
+</head>
+
+<body>
+    <div class="main w-full min-h-screen bg-zinc-900">
+        <div class="form p-[30px] rounded">
+            <form action="/create" method="post">
+                <input class="text-white block px-4 w-full rounded py-3 bg-zinc-800" type="text"
+                    placeholder="Enter the title" name="title" />
+                <textarea class="text-white block rounded-lg px-4 w-full mt-[30px] py-3 resize-none bg-zinc-800"
+                    placeholder="Enter your details" name="detail"></textarea>
+                <input type="submit" class="mt-2 ml-2 text-white px-5 py-2 bg-blue-500 rounded" value="Create Task"> 
+            </form>
+        </div>
+
+        <div class="cards m-10 flex flex-wrap gap-2">
+            <% if (files.length > 0) { %>
+                <% files.forEach(function(val) { %>
+                    <div class="task w-72 bg-zinc-800 rounded p-4">
+                        <h1 class="text-white text-3xl ml-2"><%= val %></h1>
+                        <a href="/file/<%= val %>" class="text-blue-500 ml-2 inline-block m-3">Read More</a>
+                        <a href="/file/<%= val %>"  class="">edit</a>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h3 class="text-white text-3xl">No tasks available...</h3>
+            <% } %>
+        </div>
+    </div>
+
+    <script src="/javascripts/script.js"></script>
+</body>
+
+</html>
